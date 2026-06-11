@@ -1,0 +1,69 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+<header class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-stone-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    
+    <a href="#home" class="text-3xl font-serif text-[#D4AF37] tracking-wider z-50">MH Nails</a>
+    
+    <nav class="hidden md:flex space-x-8">
+      <a href="#leistungen" class="text-stone-600 hover:text-[#D4AF37] font-medium transition">Leistungen</a>
+      <a href="#preise" class="text-stone-600 hover:text-[#D4AF37] font-medium transition">Preise</a>
+      <a href="#galerie" class="text-stone-600 hover:text-[#D4AF37] font-medium transition">Galerie</a>
+      <a href="#bewertungen" class="text-stone-600 hover:text-[#D4AF37] font-medium transition">Bewertungen</a>
+      <a href="#kontakt" class="text-stone-600 hover:text-[#D4AF37] font-medium transition">Kontakt</a>
+    </nav>
+
+    <div class="flex items-center space-x-2 sm:space-x-3 z-50">
+      
+      <a href="tel:+49123456789" class="flex items-center justify-center w-10 h-10 md:w-auto md:px-4 md:py-2 rounded-full bg-stone-100 text-stone-700 hover:bg-stone-200 transition shadow-sm" aria-label="Anrufen" title="Jetzt anrufen">
+        <Icon name="mdi:phone-outline" class="w-5 h-5 md:mr-2" />
+        <span class="hidden md:inline font-medium text-sm">Anrufen</span>
+      </a>
+
+      <a href="https://wa.me/49123456789" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-10 h-10 md:w-auto md:px-4 md:py-2 rounded-full bg-green-50 text-green-600 hover:bg-green-100 transition shadow-sm" aria-label="WhatsApp" title="Auf WhatsApp schreiben">
+        <Icon name="mdi:whatsapp" class="w-5 h-5 md:mr-2" />
+        <span class="hidden lg:inline font-medium text-sm">WhatsApp</span>
+      </a>
+
+      <a href="#termin" class="hidden md:inline-block bg-black hover:bg-[#D4AF37] text-white px-5 py-2.5 rounded-full text-sm font-medium transition shadow-md">
+        Termin buchen
+      </a>
+
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-stone-600 focus:outline-none bg-stone-100 rounded-lg" aria-label="Menü öffnen">
+        <Icon name="mdi:menu" class="w-6 h-6" />
+      </button>
+
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-stone-100 shadow-xl absolute w-full top-20 left-0">
+    <nav class="flex flex-col px-6 pt-4 pb-8 space-y-4 text-center">
+      <a href="#leistungen" class="mobile-link text-stone-600 hover:text-[#D4AF37] font-medium text-lg py-2">Leistungen</a>
+      <a href="#preise" class="mobile-link text-stone-600 hover:text-[#D4AF37] font-medium text-lg py-2">Preise</a>
+      <a href="#galerie" class="mobile-link text-stone-600 hover:text-[#D4AF37] font-medium text-lg py-2">Galerie</a>
+      <a href="#bewertungen" class="mobile-link text-stone-600 hover:text-[#D4AF37] font-medium text-lg py-2">Bewertungen</a>
+      <a href="#kontakt" class="mobile-link text-stone-600 hover:text-[#D4AF37] font-medium text-lg py-2">Kontakt</a>
+      <div class="pt-4 border-t border-stone-100">
+        <a href="#termin" class="mobile-link inline-block bg-black hover:bg-[#D4AF37] transition text-white px-8 py-3 rounded-full font-medium shadow-md w-full">Termin buchen</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const links = document.querySelectorAll('.mobile-link');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+      });
+    });
+  }
+</script>
