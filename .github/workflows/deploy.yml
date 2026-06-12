@@ -25,6 +25,7 @@ jobs:
         with:
           # Hier sagen wir der Action, dass du npm nutzt
           package-manager: npm
+          node-version: 22
 
   deploy:
     needs: build
