@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Löst die Action aus, sobald du Code in den "main" Branch pushst
+  push:
+    branches: [ main ]
+  # Erlaubt es dir, die Action auch manuell über die GitHub-Website zu starten
+  workflow_dispatch:
+
+# Gibt der Action die nötigen Rechte, um die Seite zu veröffentlichen
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository
+        uses: actions/checkout@v4
+      
+      - name: Install, build, and upload your Astro site
+        uses: withastro/action@v3
+        with:
+          # Hier sagen wir der Action, dass du npm nutzt
+          package-manager: npm
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
